@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         jokeTextView = findViewById(R.id.joke_text_view);
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Call<Joke> jokeCall = jokeApi.getJoke();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Joke> call, Throwable t) {
 
-                Toast.makeText(MainActivity.this, "Failed to fetch data!",
+                Toast.makeText(MainActivity.this, R.string.falied_to_fetch_data,
                         Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_reset) {
 
-            jokeTextView.setText("Press to load new joke!");
+            jokeTextView.setText(R.string.press_to_load_new_joke);
         }
 
         return super.onOptionsItemSelected(item);
