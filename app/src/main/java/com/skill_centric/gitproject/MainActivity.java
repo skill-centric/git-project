@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -17,12 +18,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView jokeTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        jokeTextView = findViewById(R.id.joke_text_view);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.chucknorris.io/")
@@ -53,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String joke = response.body().getValue();
 
-                Toast.makeText(MainActivity.this, joke, Toast.LENGTH_SHORT).show();
+                jokeTextView.setText(joke);
             }
 
             @Override
