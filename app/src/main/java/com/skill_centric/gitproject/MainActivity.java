@@ -84,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_reset) {
+
+            jokeTextView.setText("Press to load new joke!");
         }
 
         return super.onOptionsItemSelected(item);
