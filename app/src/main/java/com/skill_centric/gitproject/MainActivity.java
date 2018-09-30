@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String KEY_CONTENTS = "key_contents";
     private TextView jokeTextView;
 
     @Override
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         jokeTextView = findViewById(R.id.joke_text_view);
+
+        if (savedInstanceState != null) {
+
+            String contents = savedInstanceState.getString(KEY_CONTENTS);
+            jokeTextView.setText(contents);
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.chucknorris.io/")
@@ -69,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        String contents = jokeTextView.getText().toString();
+        outState.putString(KEY_CONTENTS, contents);
     }
 
     @Override
