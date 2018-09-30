@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">GitProject</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_reset">Reset</string>
+    <string name="press_to_load_new_joke">Press to load new joke!</string>
+    <string name="falied_to_fetch_data">Failed to fetch data!</string>
 </resources>
